@@ -1,0 +1,12 @@
+<layout id="WatchFace">
+    <label id="TimeLabel"
+        x="center"
+        y="center"
+        font="Graphics.FONT_LARGE"
+        justification="Graphics.TEXT_JUSTIFY_CENTER"
+        color="Graphics.COLOR_BLUE"
+    />
+    <drawable id="Hours" class="HoursRing" />
+    <drawable id="Minutes" class="MinutesRing" />
+    <drawable id="Meridiem" class="MeridiemRing" />
+</layout>
