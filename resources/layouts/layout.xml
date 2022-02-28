@@ -1,12 +1,20 @@
 <layout id="WatchFace">
-    <label id="TimeLabel"
-        x="center"
-        y="center"
-        font="Graphics.FONT_LARGE"
-        justification="Graphics.TEXT_JUSTIFY_CENTER"
-        color="Graphics.COLOR_BLUE"
-    />
-    <drawable id="Hours" class="HoursRing" />
-    <drawable id="Minutes" class="MinutesRing" />
-    <drawable id="Meridiem" class="MeridiemRing" />
+    <drawable id="Hours" class="SaturnRing">
+        <param name="segments">12</param>
+        <param name="radius">90</param>
+        <param name="width">5</param>
+        <param name="gap">6</param>
+    </drawable>
+    <drawable id="Minutes" class="SaturnRing">
+        <param name="segments">60</param>
+        <param name="radius">70</param>
+        <param name="width">5</param>
+        <param name="gap">2</param>
+    </drawable>
+    <drawable id="Meridiem" class="SaturnRing">
+        <param name="segments">2</param>
+        <param name="radius">50</param>
+        <param name="width">5</param>
+        <param name="active">true</param>
+    </drawable>
 </layout>

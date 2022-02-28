@@ -24,19 +24,19 @@ class SaturnView extends WatchUi.WatchFace {
     function onUpdate(dc as Dc) as Void {
         // Get and show the current time
         var clockTime = System.getClockTime();
-        var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
 
-        var view = View.findDrawableById("TimeLabel") as Text;
-        view.setText(timeString);
+        // var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
+        // var view = View.findDrawableById("TimeLabel") as Text;
+        // view.setText(timeString);
 
-        var meridiem = View.findDrawableById("Meridiem") as MeridiemRing;
-        meridiem.setMeridiem(clockTime.hour >= 12 ? :pm : :am);
+        var meridiem = View.findDrawableById("Meridiem") as SaturnRing;
+        meridiem.setPosition(clockTime.hour >= 12 ? 0 : 1);
 
-        var hours = View.findDrawableById("Hours") as HoursRing;
-        hours.setHour(clockTime.hour);
+        var hours = View.findDrawableById("Hours") as SaturnRing;
+        hours.setPosition(clockTime.hour);
 
-        var minutes = View.findDrawableById("Minutes") as MinutesRing;
-        minutes.setMinute(clockTime.min);
+        var minutes = View.findDrawableById("Minutes") as SaturnRing;
+        minutes.setPosition(clockTime.min);
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
