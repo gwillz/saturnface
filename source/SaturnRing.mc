@@ -3,6 +3,8 @@ import Toybox.Graphics;
 
 class SaturnRing extends WatchUi.Drawable {
 
+    private var _group as Integer;
+
     // No. of segments.
     private var _segments as Integer;
 
@@ -31,42 +33,89 @@ class SaturnRing extends WatchUi.Drawable {
     function initialize(params as Dictionary) {
         Drawable.initialize(params);
 
-        _segments = 360;
-        _gap = 0;
-        _active = false;
-        _width = 0.01;
-        _radius = 1.0;
-        _color = Graphics.COLOR_BLUE;
+        _segments = params.get(:segments);
 
-        if (params.hasKey(:segments)) {
-            self._segments = params.get(:segments);
-        }
-
-        if (params.hasKey(:gap)) {
-            self._gap = params.get(:gap) / 2;
-        }
+        _group = params.get(:group);
 
         if (params.hasKey(:active)) {
-            self._active = params.get(:active) as Boolean;
+            _active = params.get(:active) as Boolean;
+        }
+        else {
+            _active = false;
         }
 
-        if (params.hasKey(:width)) {
-            self._width = params.get(:width) / 100.0;
-        }
-
-        if (params.hasKey(:radius)) {
-            self._radius = params.get(:radius) / 100.0;
-        }
-
-        // Not sure how this converts from strings...
-        if (params.hasKey(:color)) {
-            self._color = params.get(:color) as Graphics.ColorType;
-        }
+        readSettings();
 
         self._position = 0;
         self._arc = 360 / self._segments;
 
         System.println("SaturnRing: " + self._segments + " segments, " + self._gap + " gap, " + self._width + " width, " + self._radius + " radius, " + self._active + " active, " + self._color + " color");
+    }
+
+
+    function readSettings() as Void {
+        _color = getApp().getProperty("Color") as Graphics.ColorType;
+
+        var theme = getApp().getProperty("Theme") as Saturn.Theme;
+
+        System.println("theme: " + theme + ", group: " + _group);
+
+        switch (theme | _group) {
+
+            case Saturn.COMFY | Saturn.HOURS:
+                self._width = 0.05;
+                self._radius = 0.90;
+                self._gap = 3;
+                break;
+
+            case Saturn.COMFY | Saturn.MINUTES:
+                self._width = 0.05;
+                self._radius = 0.70;
+                self._gap = 1;
+                break;
+
+            case Saturn.COMFY | Saturn.MERIDIEM:
+                self._width = 0.05;
+                self._radius = 0.50;
+                self._gap = 0;
+                break;
+
+            case Saturn.SUPER_THIN | Saturn.HOURS:
+                self._width = 0.01;
+                self._radius = 0.85;
+                self._gap = 1;
+                break;
+
+            case Saturn.SUPER_THIN | Saturn.MINUTES:
+                self._width = 0.01;
+                self._radius = 0.75;
+                self._gap = 1;
+                break;
+
+            case Saturn.SUPER_THIN | Saturn.MERIDIEM:
+                self._width = 0.01;
+                self._radius = 0.65;
+                self._gap = 0;
+                break;
+
+            case Saturn.COMPACT | Saturn.HOURS:
+                self._width = 0.03;
+                self._radius = 0.95;
+                self._gap = 2;
+                break;
+
+            case Saturn.COMPACT | Saturn.MINUTES:
+                self._width = 0.10;
+                self._radius = 0.75;
+                self._gap = 1;
+                break;
+
+            case Saturn.COMPACT | Saturn.MERIDIEM:
+                self._width = 0.03;
+                self._radius = 0.55;
+                self._gap = 0;
+                break;
+        }
     }
 
 
