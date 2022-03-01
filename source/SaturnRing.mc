@@ -29,6 +29,8 @@ class SaturnRing extends WatchUi.Drawable {
     // Segment colour.
     private var _color as Graphics.ColorType;
 
+    private var _visible as Boolean;
+
 
     function initialize(params as Dictionary) {
         Drawable.initialize(params);
@@ -37,11 +39,12 @@ class SaturnRing extends WatchUi.Drawable {
 
         _group = params.get(:group);
 
+        _visible = true;
+
+        _active = false;
+
         if (params.hasKey(:active)) {
             _active = params.get(:active) as Boolean;
-        }
-        else {
-            _active = false;
         }
 
         readSettings();
@@ -56,6 +59,7 @@ class SaturnRing extends WatchUi.Drawable {
     function readSettings() as Void {
         _color = getApp().getProperty("Color") as Graphics.ColorType;
 
+        var showSeconds = getApp().getProperty("ShowSeconds") as Boolean;
         var theme = getApp().getProperty("Theme") as Saturn.Theme;
 
         System.println("theme: " + theme + ", group: " + _group);
@@ -72,6 +76,12 @@ class SaturnRing extends WatchUi.Drawable {
                 self._width = 0.05;
                 self._radius = 0.70;
                 self._gap = 1;
+                break;
+
+            case Saturn.COMFY | Saturn.SECONDS:
+                self._width = 0.05;
+                self._radius = 0.50;
+                self._gap = 0;
                 break;
 
             case Saturn.COMFY | Saturn.MERIDIEM:
@@ -92,6 +102,12 @@ class SaturnRing extends WatchUi.Drawable {
                 self._gap = 1;
                 break;
 
+            case Saturn.SUPER_THIN | Saturn.SECONDS:
+                self._width = 0.01;
+                self._radius = 0.65;
+                self._gap = 0;
+                break;
+
             case Saturn.SUPER_THIN | Saturn.MERIDIEM:
                 self._width = 0.01;
                 self._radius = 0.65;
@@ -100,31 +116,47 @@ class SaturnRing extends WatchUi.Drawable {
 
             case Saturn.COMPACT | Saturn.HOURS:
                 self._width = 0.03;
-                self._radius = 0.95;
+                self._radius = 0.97;
                 self._gap = 2;
                 break;
 
             case Saturn.COMPACT | Saturn.MINUTES:
                 self._width = 0.10;
-                self._radius = 0.75;
+                self._radius = 0.79;
+                self._gap = 1;
+                break;
+
+            case Saturn.COMPACT | Saturn.SECONDS:
+                self._width = 0.10;
+                self._radius = 0.55;
                 self._gap = 1;
                 break;
 
             case Saturn.COMPACT | Saturn.MERIDIEM:
                 self._width = 0.03;
-                self._radius = 0.55;
+                self._radius = 0.68;
                 self._gap = 0;
                 break;
         }
     }
 
 
-    function setPosition(position as Integer) {
+    function setVisible(visible as Boolean) as Void {
+        self._visible = visible;
+    }
+
+
+    function setPosition(position as Integer) as Void {
         self._position = (position % self._segments) || self._segments;
     }
 
 
     function draw(dc as Dc) as Void {
+        if (!_visible) {
+            dc.clear();
+            return;
+        }
+
         var width = dc.getWidth();
         var height = dc.getHeight();
 

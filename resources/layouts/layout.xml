@@ -7,6 +7,10 @@
         <param name="group">4096</param>
         <param name="segments">60</param>
     </drawable>
+    <drawable id="Seconds" class="SaturnRing">
+        <param name="group">8192</param>
+        <param name="segments">60</param>
+    </drawable>
     <drawable id="Meridiem" class="SaturnRing">
         <param name="group">1024</param>
         <param name="segments">2</param>
