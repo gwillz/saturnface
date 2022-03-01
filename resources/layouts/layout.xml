@@ -16,4 +16,12 @@
         <param name="segments">2</param>
         <param name="active">true</param>
     </drawable>
+    <label
+        id="DateLabel"
+        x="center"
+        y="center"
+        font="Graphics.FONT_TINY"
+        justification="Graphics.TEXT_JUSTIFY_CENTER"
+        color="Graphics.COLOR_BLUE"
+    />
 </layout>
