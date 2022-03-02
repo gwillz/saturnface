@@ -4,6 +4,5 @@
     <property id="Theme" type="number">1</property>
     <property id="ShowSeconds" type="boolean">false</property>
     <property id="ShowDate" type="boolean">false</property>
-    <property id="ShowHeart" type="boolean">false</property>
 
 </properties>
