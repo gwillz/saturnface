@@ -92,49 +92,49 @@ class SaturnRing extends WatchUi.Drawable {
 
             case Saturn.SUPER_THIN | Saturn.HOURS:
                 self._width = 0.01;
-                self._radius = 0.85;
-                self._gap = 1;
+                self._radius = 0.90;
+                self._gap = 0;
                 break;
 
             case Saturn.SUPER_THIN | Saturn.MINUTES:
                 self._width = 0.01;
-                self._radius = 0.75;
-                self._gap = 1;
+                self._radius = 0.70;
+                self._gap = 0;
                 break;
 
             case Saturn.SUPER_THIN | Saturn.SECONDS:
                 self._width = 0.01;
-                self._radius = 0.65;
+                self._radius = 0.50;
                 self._gap = 0;
                 break;
 
             case Saturn.SUPER_THIN | Saturn.MERIDIEM:
                 self._width = 0.01;
-                self._radius = 0.65;
+                self._radius = 0.50;
                 self._gap = 0;
                 break;
 
             case Saturn.COMPACT | Saturn.HOURS:
                 self._width = 0.03;
                 self._radius = 0.97;
-                self._gap = 2;
+                self._gap = 1;
                 break;
 
             case Saturn.COMPACT | Saturn.MINUTES:
                 self._width = 0.10;
-                self._radius = 0.79;
+                self._radius = 0.80;
                 self._gap = 1;
                 break;
 
             case Saturn.COMPACT | Saturn.SECONDS:
-                self._width = 0.10;
-                self._radius = 0.55;
+                self._width = 0.03;
+                self._radius = 0.64;
                 self._gap = 1;
                 break;
 
             case Saturn.COMPACT | Saturn.MERIDIEM:
                 self._width = 0.03;
-                self._radius = 0.68;
+                self._radius = 0.64;
                 self._gap = 0;
                 break;
         }
