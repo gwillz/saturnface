@@ -2,15 +2,15 @@
 module Saturn {
 
     enum Theme {
-        COMFY = 1,
-        SUPER_THIN = 2,
-        COMPACT = 3,
+        THEME_COMFY = 1,
+        THEME_SUPER_THIN = 2,
+        THEME_COMPACT = 3,
     }
 
-    enum ThemeGroup {
-        MERIDIEM = 1024,
-        HOURS    = 2048,
-        MINUTES  = 4096,
-        SECONDS  = 8192,
+    enum Ring {
+        RING_MERIDIEM = 1024,
+        RING_HOURS    = 2048,
+        RING_MINUTES  = 4096,
+        RING_SECONDS  = 8192,
     }
 }

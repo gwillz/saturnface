@@ -50,7 +50,7 @@ class SaturnRing extends WatchUi.Drawable {
         }
 
         // Theme things.
-        _theme = Saturn.COMFY;
+        _theme = Saturn.THEME_COMFY;
         _color = Graphics.COLOR_WHITE;
         _gap = 0;
         _width = 0.01;
@@ -66,73 +66,73 @@ class SaturnRing extends WatchUi.Drawable {
 
         switch (_theme | _group) {
 
-            case Saturn.COMFY | Saturn.HOURS:
+            case Saturn.THEME_COMFY | Saturn.RING_HOURS:
                 self._width = 0.05;
                 self._radius = 0.90;
                 self._gap = 3;
                 break;
 
-            case Saturn.COMFY | Saturn.MINUTES:
+            case Saturn.THEME_COMFY | Saturn.RING_MINUTES:
                 self._width = 0.05;
                 self._radius = 0.70;
                 self._gap = 1;
                 break;
 
-            case Saturn.COMFY | Saturn.SECONDS:
+            case Saturn.THEME_COMFY | Saturn.RING_SECONDS:
                 self._width = 0.05;
                 self._radius = 0.50;
                 self._gap = 0;
                 break;
 
-            case Saturn.COMFY | Saturn.MERIDIEM:
+            case Saturn.THEME_COMFY | Saturn.RING_MERIDIEM:
                 self._width = 0.05;
                 self._radius = 0.50;
                 self._gap = 0;
                 break;
 
-            case Saturn.SUPER_THIN | Saturn.HOURS:
+            case Saturn.THEME_SUPER_THIN | Saturn.RING_HOURS:
                 self._width = 0.01;
                 self._radius = 0.90;
                 self._gap = 0;
                 break;
 
-            case Saturn.SUPER_THIN | Saturn.MINUTES:
+            case Saturn.THEME_SUPER_THIN | Saturn.RING_MINUTES:
                 self._width = 0.01;
                 self._radius = 0.70;
                 self._gap = 0;
                 break;
 
-            case Saturn.SUPER_THIN | Saturn.SECONDS:
+            case Saturn.THEME_SUPER_THIN | Saturn.RING_SECONDS:
                 self._width = 0.01;
                 self._radius = 0.50;
                 self._gap = 0;
                 break;
 
-            case Saturn.SUPER_THIN | Saturn.MERIDIEM:
+            case Saturn.THEME_SUPER_THIN | Saturn.RING_MERIDIEM:
                 self._width = 0.01;
                 self._radius = 0.50;
                 self._gap = 0;
                 break;
 
-            case Saturn.COMPACT | Saturn.HOURS:
+            case Saturn.THEME_COMPACT | Saturn.RING_HOURS:
                 self._width = 0.03;
                 self._radius = 0.97;
                 self._gap = 1;
                 break;
 
-            case Saturn.COMPACT | Saturn.MINUTES:
+            case Saturn.THEME_COMPACT | Saturn.RING_MINUTES:
                 self._width = 0.10;
                 self._radius = 0.80;
                 self._gap = 1;
                 break;
 
-            case Saturn.COMPACT | Saturn.SECONDS:
+            case Saturn.THEME_COMPACT | Saturn.RING_SECONDS:
                 self._width = 0.03;
                 self._radius = 0.64;
                 self._gap = 1;
                 break;
 
-            case Saturn.COMPACT | Saturn.MERIDIEM:
+            case Saturn.THEME_COMPACT | Saturn.RING_MERIDIEM:
                 self._width = 0.03;
                 self._radius = 0.64;
                 self._gap = 0;
