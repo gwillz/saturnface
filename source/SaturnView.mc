@@ -8,19 +8,18 @@ class SaturnView extends WatchUi.WatchFace {
     private var _showSeconds as Boolean;
     private var _showDate as Boolean;
     private var _color as Graphics.ColorType;
+    private var _theme as Saturn.Theme;
 
     function initialize() {
         WatchFace.initialize();
-
-        _showSeconds = getApp().getProperty("ShowSeconds") as Boolean;
-        _showDate = getApp().getProperty("ShowDate") as Boolean;
-        _color = getApp().getProperty("Color") as Graphics.ColorType;
+        readSettings();
     }
 
 
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.WatchFace(dc));
+        updateTheme();
     }
 
 
@@ -38,6 +37,7 @@ class SaturnView extends WatchUi.WatchFace {
         hours.setPosition(clockTime.hour);
         minutes.setPosition(clockTime.min);
 
+        // Hide/show seconds or the meridiem ring.
         if (_showSeconds) {
             meridiem.setVisible(false);
             seconds.setVisible(true);
@@ -51,6 +51,7 @@ class SaturnView extends WatchUi.WatchFace {
             meridiem.setPosition(clockTime.hour >= 12 ? 0 : 1);
         }
 
+        // Hide/show the date.
         if (_showDate) {
             var date = Time.Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
 
@@ -75,20 +76,33 @@ class SaturnView extends WatchUi.WatchFace {
     }
 
 
-    function updateConfigs() as Void {
+    function readSettings() as Void {
+        _showSeconds = getApp().getProperty("ShowSeconds") as Boolean;
+        _showDate = getApp().getProperty("ShowDate") as Boolean;
+        _color = getApp().getProperty("Color") as Graphics.ColorType;
+        _theme = getApp().getProperty("Theme") as Saturn.Theme;
+    }
+
+
+    function updateTheme() as Void {
+        readSettings();
+
         var meridiem = View.findDrawableById("Meridiem") as SaturnRing;
         var hours = View.findDrawableById("Hours") as SaturnRing;
         var minutes = View.findDrawableById("Minutes") as SaturnRing;
         var seconds = View.findDrawableById("Seconds") as SaturnRing;
 
-        meridiem.readSettings();
-        hours.readSettings();
-        minutes.readSettings();
-        seconds.readSettings();
+        meridiem.setColor(_color);
+        meridiem.setTheme(_theme);
 
-        _showSeconds = getApp().getProperty("ShowSeconds") as Boolean;
-        _showDate = getApp().getProperty("ShowDate") as Boolean;
-        _color = getApp().getProperty("Color") as Graphics.ColorType;
+        hours.setColor(_color);
+        hours.setTheme(_theme);
+
+        minutes.setColor(_color);
+        minutes.setTheme(_theme);
+
+        seconds.setColor(_color);
+        seconds.setTheme(_theme);
     }
-
 }
+

@@ -11,7 +11,7 @@ class SaturnRing extends WatchUi.Drawable {
     // Segment gap, in degrees.
     private var _gap as Integer;
 
-    // Segment size, in degrees.
+    // Segment size, in degrees - determined by _segments.
     private var _arc as Integer;
 
     // Current segment.
@@ -29,42 +29,42 @@ class SaturnRing extends WatchUi.Drawable {
     // Segment colour.
     private var _color as Graphics.ColorType;
 
+    // Show or hide.
     private var _visible as Boolean;
+
+    // Theming, this sets the gap/width/radius.
+    private var _theme as Saturn.Theme;
 
 
     function initialize(params as Dictionary) {
         Drawable.initialize(params);
 
         _segments = params.get(:segments);
-
         _group = params.get(:group);
 
         _visible = true;
-
         _active = false;
 
         if (params.hasKey(:active)) {
             _active = params.get(:active) as Boolean;
         }
 
-        readSettings();
+        // Theme things.
+        _theme = Saturn.COMFY;
+        _color = Graphics.COLOR_WHITE;
+        _gap = 0;
+        _width = 0.01;
+        _radius = 1.0;
 
         self._position = 0;
         self._arc = 360 / self._segments;
-
-        System.println("SaturnRing: " + self._segments + " segments, " + self._gap + " gap, " + self._width + " width, " + self._radius + " radius, " + self._active + " active, " + self._color + " color");
     }
 
 
-    function readSettings() as Void {
-        _color = getApp().getProperty("Color") as Graphics.ColorType;
+    function setTheme(theme as Saturn.Theme) as Void {
+        self._theme = theme;
 
-        var showSeconds = getApp().getProperty("ShowSeconds") as Boolean;
-        var theme = getApp().getProperty("Theme") as Saturn.Theme;
-
-        System.println("theme: " + theme + ", group: " + _group);
-
-        switch (theme | _group) {
+        switch (_theme | _group) {
 
             case Saturn.COMFY | Saturn.HOURS:
                 self._width = 0.05;
@@ -141,6 +141,11 @@ class SaturnRing extends WatchUi.Drawable {
     }
 
 
+    function setColor(color as Graphics.ColorType) as Void {
+        self._color = color;
+    }
+
+
     function setVisible(visible as Boolean) as Void {
         self._visible = visible;
     }
@@ -164,17 +169,17 @@ class SaturnRing extends WatchUi.Drawable {
         var xCenter = width / 2;
         var yCenter = height / 2;
 
-        // 95% of the face.
         var radius = (yCenter > xCenter ? xCenter : yCenter) * self._radius;
 
-        // 3% width.
         dc.setPenWidth(width * self._width);
         dc.setColor(self._color, Graphics.COLOR_TRANSPARENT);
 
+        // Draw just one segment.
         if (self._active) {
             var segment = self.getSegment(self._position);
             dc.drawArc(xCenter, yCenter, radius, Graphics.ARC_CLOCKWISE, segment[:start], segment[:end]);
         }
+        // Draw lots of segments.
         else {
             for (var position = 0; position < self._position; position++) {
                 var segment = self.getSegment(position);
