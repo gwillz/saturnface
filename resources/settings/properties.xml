@@ -4,5 +4,7 @@
     <property id="Theme" type="number">1</property>
     <property id="ShowSeconds" type="boolean">false</property>
     <property id="ShowDate" type="boolean">false</property>
+    <property id="ShowTimer" type="boolean">true</property>
+    <property id="DataType" type="number">0x8</property>
 
 </properties>

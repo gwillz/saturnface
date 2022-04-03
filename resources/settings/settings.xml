@@ -32,4 +32,20 @@
         <settingConfig type="boolean" />
     </setting>
 
+    <setting propertyKey="@Properties.ShowTimer" title="@Strings.TimerTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.DataType" title="@Strings.DataTitle">
+        <settingConfig type="list">
+            <listEntry value="0x0">@Strings.DataNone</listEntry>
+            <listEntry value="0x2">@Strings.DataBattery</listEntry>
+            <listEntry value="0x4">@Strings.DataSteps</listEntry>
+            <listEntry value="0x8">@Strings.DataHeart</listEntry>
+            <listEntry value="0x10">@Strings.DataAltitude</listEntry>
+            <listEntry value="0x20">@Strings.DataHeading</listEntry>
+            <listEntry value="0x40">@Strings.DataSpeed</listEntry>
+        </settingConfig>
+    </setting>
+
 </settings>

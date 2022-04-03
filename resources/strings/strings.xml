@@ -4,7 +4,9 @@
     <string id="ColorTitle">Color</string>
     <string id="ThemeTitle">Theme</string>
     <string id="SecondsTitle">Show Seconds</string>
+    <string id="TimerTitle">Show Timer when active</string>
     <string id="DateTitle">Show Date</string>
+    <string id="DataTitle">Data Display</string>
 
     <string id="ColorWhite">White</string>
     <string id="ColorLightGray">Light Gray</string>
@@ -21,5 +23,14 @@
     <string id="ThemeComfy">Comfy</string>
     <string id="ThemeSuperThin">Super Thin</string>
     <string id="ThemeCompact">Compact</string>
+
+    <string id="DataNone">None</string>
+    <string id="DataDate">Date</string>
+    <string id="DataBattery">Battery</string>
+    <string id="DataSteps">Steps</string>
+    <string id="DataHeart">Heart Beat (bpm)</string>
+    <string id="DataAltitude">Altitude (m)</string>
+    <string id="DataHeading">Heading (deg)</string>
+    <string id="DataSpeed">Speed (km/h)</string>
 
 </strings>

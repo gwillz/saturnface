@@ -13,4 +13,14 @@ module Saturn {
         RING_MINUTES  = 4096,
         RING_SECONDS  = 8192,
     }
+
+    enum Data {
+        DATA_NONE     = 0x0,
+        DATA_BATTERY  = 0x2,
+        DATA_STEPS    = 0x4,
+        DATA_HEART    = 0x8,
+        DATA_ALTITUDE = 0x10,
+        DATA_HEADING  = 0x20,
+        DATA_SPEED    = 0x40,
+    }
 }

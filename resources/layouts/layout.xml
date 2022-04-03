@@ -17,11 +17,31 @@
         <param name="active">true</param>
     </drawable>
     <label
-        id="DateLabel"
+        id="TimerLabel"
+        x="center"
+        y="center"
+        font="Graphics.FONT_LARGE"
+        justification="Graphics.TEXT_JUSTIFY_CENTER"
+    />
+    <label
+        id="MonthLabel"
         x="center"
         y="center"
         font="Graphics.FONT_TINY"
         justification="Graphics.TEXT_JUSTIFY_CENTER"
-        color="Graphics.COLOR_BLUE"
+    />
+    <label
+        id="DayLabel"
+        x="center"
+        y="center"
+        font="Graphics.FONT_TINY"
+        justification="Graphics.TEXT_JUSTIFY_CENTER"
+    />
+    <label
+        id="DataLabel"
+        x="center"
+        y="center"
+        font="Graphics.FONT_LARGE"
+        justification="Graphics.TEXT_JUSTIFY_CENTER"
     />
 </layout>

@@ -19,7 +19,7 @@ class SaturnApp extends Application.AppBase {
 
     // New app settings have been received so trigger a UI update
     function onSettingsChanged() as Void {
-        _view.updateTheme();
+        _view.updateSettings();
         WatchUi.requestUpdate();
     }
 
